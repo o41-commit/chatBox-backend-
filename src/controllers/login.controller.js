@@ -27,20 +27,17 @@ const LoginController = {
       );
 
       const cookieOptions = {
-        expires: new Date(Date.now() + 1 * 60 * 60 * 1000),
+        expires: new Date(Date.now() + 60 * 60 * 1000),
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
+        secure: true,
+        sameSite: "none",
       };
 
-      return res
-        .cookie("token", token, cookieOptions)
-        .status(200)
-        .json({
-          message: "Login successful",
-          token,
-          appearance: foundUser.appearance,
-        });
+      return res.cookie("token", token, cookieOptions).status(200).json({
+        message: "Login successful",
+        token,
+        appearance: foundUser.appearance,
+      });
     } catch (error) {
       console.error(error);
       return res.status(500).json({ message: "Server error" });
@@ -87,21 +84,18 @@ const LoginController = {
       );
 
       const cookieOptions = {
-        expires: new Date(Date.now() + 1 * 60 * 60 * 1000),
+        expires: new Date(Date.now() + 60 * 60 * 1000),
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
+        secure: true,
+        sameSite: "none",
       };
 
-      return res
-        .cookie("token", token, cookieOptions)
-        .status(200)
-        .json({
-          message: "Registration successful",
-          token,
-          appearance: createdUser.appearance,
-          cookieOptions,
-        });
+      return res.cookie("token", token, cookieOptions).status(200).json({
+        message: "Registration successful",
+        token,
+        appearance: createdUser.appearance,
+        cookieOptions,
+      });
     } catch (error) {
       console.error(error);
       return res.status(500).json({ message: "Server error" });
