@@ -5,7 +5,7 @@ import { active } from "../controllers/active.controller.js";
 import verifyToken from "../middleware/user.middleware.js";
 import FriendsController from "../controllers/Friends.controller.js";
 import Settings from "../controllers/Setting.controller.js";
-import upload from "../middleware/upload.middleware.js";
+import upload from "../middleware/Upload.middleware.js";
 import Profile from "../controllers/Profile.controller.js";
 import GroupController from "../controllers/Group.controller.js";
 import NotificationController from "../controllers/notification.controller.js";
@@ -15,7 +15,7 @@ const router = express.Router();
 router.post(
   "/read-message",
   (req, res, next) => {
-    console.log("Route reached");
+    // console.log("Route reached");
     next();
   },
   verifyToken,
